@@ -1,7 +1,7 @@
 ---
 name: maintain-component
 description: >
-  Fix, improve, or update an existing component in the @rspl/reusable-ui library.
+  Fix, improve, or update an existing component in the @rspl/react-reusable-ui library.
   Use this skill whenever the user asks to fix, update, improve, or patch a component —
   phrases like "add dark mode to Modal", "Button is missing forwardRef", "Checkbox
   props aren't exported", "fix accessibility on Dropdown", "add tests for Switch",
@@ -12,7 +12,7 @@ description: >
 
 # maintain-component
 
-You are fixing or improving an existing component in the `@rspl/reusable-ui` library. The goal is the smallest correct change — improve exactly what was asked, leave everything else alone.
+You are fixing or improving an existing component in the `@rspl/react-reusable-ui` library. The goal is the smallest correct change — improve exactly what was asked, leave everything else alone.
 
 ## Step 1 — Read before touching anything
 

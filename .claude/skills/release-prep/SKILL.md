@@ -1,7 +1,7 @@
 ---
 name: release-prep
 description: >
-  Prepare the @rspl/reusable-ui library for an npm publish. Use this skill whenever
+  Prepare the @rspl/react-reusable-ui library for an npm publish. Use this skill whenever
   the user wants to cut a release, bump the version, or publish the package — phrases
   like "/release-prep", "release a patch", "bump to 1.1.0", "prepare for publish",
   "ready to release", "publish to npm", "what do I need to do to ship this", or
@@ -11,7 +11,7 @@ description: >
 
 # release-prep
 
-Walk through every step needed to safely publish `@rspl/reusable-ui` to npm. Stop at each gate — if something fails, fix it before moving on.
+Walk through every step needed to safely publish `@rspl/react-reusable-ui` to npm. Stop at each gate — if something fails, fix it before moving on.
 
 ---
 
@@ -124,7 +124,7 @@ Edit `package.json`: update `"version"` to the new version string.
 Print this checklist for the user to follow:
 
 ```
-Release checklist for @rspl/reusable-ui v<NEW_VERSION>
+Release checklist for @rspl/react-reusable-ui v<NEW_VERSION>
 ──────────────────────────────────────────────────────
 ✓  TypeScript — 0 errors
 ✓  Lint       — 0 errors

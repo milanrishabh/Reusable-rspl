@@ -1,7 +1,7 @@
 ---
 name: health-check
 description: >
-  Run a full health check on the @rspl/reusable-ui library and report what passes
+  Run a full health check on the @rspl/react-reusable-ui library and report what passes
   and what needs fixing. Use this skill whenever the user asks to check, verify, or
   validate the library's state — phrases like "/health-check", "is everything ok",
   "check the build", "are all components exported", "run the tests", "validate the
@@ -89,7 +89,7 @@ If mismatches exist, the fix is: `npm run gen:subpaths`
 Print this table after all checks complete:
 
 ```
-@rspl/reusable-ui — Health Check
+@rspl/react-reusable-ui — Health Check
 ─────────────────────────────────────────────────
 ✓  TypeScript       0 errors
 ✓  Lint             0 errors  (CRLF warnings ignored)
@@ -103,7 +103,7 @@ Result: HEALTHY ✓
 Or if there are failures:
 
 ```
-@rspl/reusable-ui — Health Check
+@rspl/react-reusable-ui — Health Check
 ─────────────────────────────────────────────────
 ✗  TypeScript       2 errors  ← see below
 ✓  Lint             0 errors

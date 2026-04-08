@@ -1,5 +1,5 @@
 {
-  "name": "@rspl/reusable-ui",
+  "name": "@rspl/react-reusable-ui",
   "version": "1.0.0",
   "description": "Shared React 19 UI primitives powered by Tailwind CSS v4.",
   "type": "module",

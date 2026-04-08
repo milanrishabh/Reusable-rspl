@@ -1,7 +1,7 @@
 ---
 name: add-component
 description: >
-  Full workflow for adding a new UI component to the @rspl/reusable-ui library.
+  Full workflow for adding a new UI component to the @rspl/react-reusable-ui library.
   Use this skill whenever the user asks to add, create, or build a new component,
   even if they say things like "I need a Tooltip component", "can you make a Rating
   widget", "add a new component called X", or "/add-component". Covers creating the
@@ -11,7 +11,7 @@ description: >
 
 # add-component
 
-You are adding a new UI component to the `@rspl/reusable-ui` React library. Work through the steps below in order. The goal is a complete, library-quality component — not a prototype.
+You are adding a new UI component to the `@rspl/react-reusable-ui` React library. Work through the steps below in order. The goal is a complete, library-quality component — not a prototype.
 
 ## Step 1 — Clarify intent
 

@@ -1,4 +1,4 @@
-# @rspl/reusable-ui
+# @rspl/react-reusable-ui
 
 A React 19 component library built with Tailwind CSS v4. 35+ production-ready components with dark mode support, runtime theming, and full TypeScript types.
 
@@ -7,7 +7,7 @@ A React 19 component library built with Tailwind CSS v4. 35+ production-ready co
 ## Installation
 
 ```bash
-npm install @rspl/reusable-ui
+npm install @rspl/react-reusable-ui
 ```
 
 **Peer dependencies** — React must be installed by your app:
@@ -25,7 +25,7 @@ npm install react react-dom
 Add this once at your app root (e.g. `main.tsx`):
 
 ```tsx
-import "@rspl/reusable-ui/style.css";
+import "@rspl/react-reusable-ui/style.css";
 ```
 
 ### 2. Wrap your app with `ThemeProvider`
@@ -33,7 +33,7 @@ import "@rspl/reusable-ui/style.css";
 `ThemeProvider` manages light/dark mode and optional token overrides. Place it as high in the tree as possible:
 
 ```tsx
-import { ThemeProvider } from "@rspl/reusable-ui";
+import { ThemeProvider } from "@rspl/react-reusable-ui";
 
 createRoot(document.getElementById("root")!).render(
   <ThemeProvider defaultTheme="system">
@@ -47,7 +47,7 @@ createRoot(document.getElementById("root")!).render(
 ## Basic usage
 
 ```tsx
-import { Button, Input, Modal } from "@rspl/reusable-ui";
+import { Button, Input, Modal } from "@rspl/react-reusable-ui";
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -71,11 +71,11 @@ function Example() {
 Every component is available via its own subpath so bundlers only include what you use:
 
 ```tsx
-import { Button } from "@rspl/reusable-ui/button";
-import { Modal } from "@rspl/reusable-ui/modal";
-import { Table, type TableColumn } from "@rspl/reusable-ui/table";
-import { ThemeProvider, useTheme } from "@rspl/reusable-ui/theme";
-import { cn, useAnnounce } from "@rspl/reusable-ui/utils";
+import { Button } from "@rspl/react-reusable-ui/button";
+import { Modal } from "@rspl/react-reusable-ui/modal";
+import { Table, type TableColumn } from "@rspl/react-reusable-ui/table";
+import { ThemeProvider, useTheme } from "@rspl/react-reusable-ui/theme";
+import { cn, useAnnounce } from "@rspl/react-reusable-ui/utils";
 ```
 
 | Subpath              | Exports                                                                        |
@@ -129,7 +129,7 @@ The library uses Tailwind's `class` strategy — `.dark` is applied on the `Them
 ### Toggle between light and dark
 
 ```tsx
-import { useTheme } from "@rspl/reusable-ui/theme";
+import { useTheme } from "@rspl/react-reusable-ui/theme";
 
 function ThemeToggle() {
   const { resolvedTheme, toggleTheme } = useTheme();
