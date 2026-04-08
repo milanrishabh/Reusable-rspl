@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { readdirSync } from "fs";
+import dts from "vite-plugin-dts";
 
 /**
  * Library-mode build config.
@@ -25,7 +26,25 @@ for (const file of readdirSync("src/subpaths").filter((f) =>
 const entries = { index: "src/index.ts", ...subpathEntries };
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), tailwindcss()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    tailwindcss(),
+    dts({
+      tsconfigPath: "./tsconfig.lib.json",
+      outDir: "dist",
+      insertTypesEntry: true,
+      exclude: [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/**/__tests__/**",
+        "src/test/**",
+        "src/playground/**",
+        "src/main.tsx",
+        "src/App.tsx",
+      ],
+    }),
+  ],
   // Prevent public/ assets (favicon, img/*) from leaking into dist/.
   publicDir: false,
   build: {

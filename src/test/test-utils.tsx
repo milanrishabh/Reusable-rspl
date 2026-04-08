@@ -1,10 +1,11 @@
+import type { RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
 import { screen } from "@testing-library/react";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { expect, it } from "vitest";
 
-export function renderWithRouter(ui: React.ReactElement) {
+export function renderWithRouter(ui: React.ReactElement): RenderResult {
   return render(<MemoryRouter>{ui}</MemoryRouter>);
 }
 
