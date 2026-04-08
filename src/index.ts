@@ -7,7 +7,6 @@ export { ErrorBoundary } from "./components/ErrorBoundary";
 export { PageHeader, type PageHeaderProps } from "./components/PageHeader";
 
 export { Accordion } from "./components/ui/Accordion";
-export * from "./components/ui/AgGridTable";
 export { default as Alert } from "./components/ui/Alert";
 export { Badge } from "./components/ui/Badge";
 export { Button } from "./components/ui/Button";
@@ -83,6 +82,16 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/Tabs";
 export { Textarea } from "./components/ui/Textarea";
 export { Tooltip } from "./components/ui/Tooltip";
 export { default as Switch } from "./components/ui/Switch";
+
+export {
+  ThemeProvider,
+  useTheme,
+  type Theme,
+  type ResolvedTheme,
+  type ThemeTokens,
+  type ThemeContextValue,
+  type ThemeProviderProps,
+} from "./lib/theme/ThemeProvider";
 
 export { cn } from "./lib/utils/cn";
 export type { DateRange } from "./lib/types/dateRange";

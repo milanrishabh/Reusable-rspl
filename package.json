@@ -1,29 +1,228 @@
 {
   "name": "@rspl/reusable-ui",
   "version": "1.0.0",
-  "private": true,
-  "description": "Shared React UI primitives (Vite + Tailwind). Import from src/index.ts or bundle as a package.",
+  "description": "Shared React 19 UI primitives powered by Tailwind CSS v4.",
   "type": "module",
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./style.css": "./dist/style.css",
+    "./button": {
+      "types": "./dist/subpaths/button.d.ts",
+      "import": "./dist/subpaths/button.js",
+      "require": "./dist/subpaths/button.cjs"
+    },
+    "./input": {
+      "types": "./dist/subpaths/input.d.ts",
+      "import": "./dist/subpaths/input.js",
+      "require": "./dist/subpaths/input.cjs"
+    },
+    "./textarea": {
+      "types": "./dist/subpaths/textarea.d.ts",
+      "import": "./dist/subpaths/textarea.js",
+      "require": "./dist/subpaths/textarea.cjs"
+    },
+    "./checkbox": {
+      "types": "./dist/subpaths/checkbox.d.ts",
+      "import": "./dist/subpaths/checkbox.js",
+      "require": "./dist/subpaths/checkbox.cjs"
+    },
+    "./radio": {
+      "types": "./dist/subpaths/radio.d.ts",
+      "import": "./dist/subpaths/radio.js",
+      "require": "./dist/subpaths/radio.cjs"
+    },
+    "./switch": {
+      "types": "./dist/subpaths/switch.d.ts",
+      "import": "./dist/subpaths/switch.js",
+      "require": "./dist/subpaths/switch.cjs"
+    },
+    "./label": {
+      "types": "./dist/subpaths/label.d.ts",
+      "import": "./dist/subpaths/label.js",
+      "require": "./dist/subpaths/label.cjs"
+    },
+    "./slider": {
+      "types": "./dist/subpaths/slider.d.ts",
+      "import": "./dist/subpaths/slider.js",
+      "require": "./dist/subpaths/slider.cjs"
+    },
+    "./dropdown": {
+      "types": "./dist/subpaths/dropdown.d.ts",
+      "import": "./dist/subpaths/dropdown.js",
+      "require": "./dist/subpaths/dropdown.cjs"
+    },
+    "./multiselect": {
+      "types": "./dist/subpaths/multiselect.d.ts",
+      "import": "./dist/subpaths/multiselect.js",
+      "require": "./dist/subpaths/multiselect.cjs"
+    },
+    "./remote-dropdown": {
+      "types": "./dist/subpaths/remote-dropdown.d.ts",
+      "import": "./dist/subpaths/remote-dropdown.js",
+      "require": "./dist/subpaths/remote-dropdown.cjs"
+    },
+    "./date-picker": {
+      "types": "./dist/subpaths/date-picker.d.ts",
+      "import": "./dist/subpaths/date-picker.js",
+      "require": "./dist/subpaths/date-picker.cjs"
+    },
+    "./date-range-picker": {
+      "types": "./dist/subpaths/date-range-picker.d.ts",
+      "import": "./dist/subpaths/date-range-picker.js",
+      "require": "./dist/subpaths/date-range-picker.cjs"
+    },
+    "./badge": {
+      "types": "./dist/subpaths/badge.d.ts",
+      "import": "./dist/subpaths/badge.js",
+      "require": "./dist/subpaths/badge.cjs"
+    },
+    "./chip": {
+      "types": "./dist/subpaths/chip.d.ts",
+      "import": "./dist/subpaths/chip.js",
+      "require": "./dist/subpaths/chip.cjs"
+    },
+    "./spinner": {
+      "types": "./dist/subpaths/spinner.d.ts",
+      "import": "./dist/subpaths/spinner.js",
+      "require": "./dist/subpaths/spinner.cjs"
+    },
+    "./skeleton": {
+      "types": "./dist/subpaths/skeleton.d.ts",
+      "import": "./dist/subpaths/skeleton.js",
+      "require": "./dist/subpaths/skeleton.cjs"
+    },
+    "./progress": {
+      "types": "./dist/subpaths/progress.d.ts",
+      "import": "./dist/subpaths/progress.js",
+      "require": "./dist/subpaths/progress.cjs"
+    },
+    "./alert": {
+      "types": "./dist/subpaths/alert.d.ts",
+      "import": "./dist/subpaths/alert.js",
+      "require": "./dist/subpaths/alert.cjs"
+    },
+    "./status-badge": {
+      "types": "./dist/subpaths/status-badge.d.ts",
+      "import": "./dist/subpaths/status-badge.js",
+      "require": "./dist/subpaths/status-badge.cjs"
+    },
+    "./table": {
+      "types": "./dist/subpaths/table.d.ts",
+      "import": "./dist/subpaths/table.js",
+      "require": "./dist/subpaths/table.cjs"
+    },
+    "./table-pagination": {
+      "types": "./dist/subpaths/table-pagination.d.ts",
+      "import": "./dist/subpaths/table-pagination.js",
+      "require": "./dist/subpaths/table-pagination.cjs"
+    },
+    "./load-more": {
+      "types": "./dist/subpaths/load-more.d.ts",
+      "import": "./dist/subpaths/load-more.js",
+      "require": "./dist/subpaths/load-more.cjs"
+    },
+    "./modal": {
+      "types": "./dist/subpaths/modal.d.ts",
+      "import": "./dist/subpaths/modal.js",
+      "require": "./dist/subpaths/modal.cjs"
+    },
+    "./modal-drawer": {
+      "types": "./dist/subpaths/modal-drawer.d.ts",
+      "import": "./dist/subpaths/modal-drawer.js",
+      "require": "./dist/subpaths/modal-drawer.cjs"
+    },
+    "./tooltip": {
+      "types": "./dist/subpaths/tooltip.d.ts",
+      "import": "./dist/subpaths/tooltip.js",
+      "require": "./dist/subpaths/tooltip.cjs"
+    },
+    "./carousel": {
+      "types": "./dist/subpaths/carousel.d.ts",
+      "import": "./dist/subpaths/carousel.js",
+      "require": "./dist/subpaths/carousel.cjs"
+    },
+    "./tabs": {
+      "types": "./dist/subpaths/tabs.d.ts",
+      "import": "./dist/subpaths/tabs.js",
+      "require": "./dist/subpaths/tabs.cjs"
+    },
+    "./stepper": {
+      "types": "./dist/subpaths/stepper.d.ts",
+      "import": "./dist/subpaths/stepper.js",
+      "require": "./dist/subpaths/stepper.cjs"
+    },
+    "./accordion": {
+      "types": "./dist/subpaths/accordion.d.ts",
+      "import": "./dist/subpaths/accordion.js",
+      "require": "./dist/subpaths/accordion.cjs"
+    },
+    "./file-upload": {
+      "types": "./dist/subpaths/file-upload.d.ts",
+      "import": "./dist/subpaths/file-upload.js",
+      "require": "./dist/subpaths/file-upload.cjs"
+    },
+    "./gallery": {
+      "types": "./dist/subpaths/gallery.d.ts",
+      "import": "./dist/subpaths/gallery.js",
+      "require": "./dist/subpaths/gallery.cjs"
+    },
+    "./image-fallback": {
+      "types": "./dist/subpaths/image-fallback.d.ts",
+      "import": "./dist/subpaths/image-fallback.js",
+      "require": "./dist/subpaths/image-fallback.cjs"
+    },
+    "./calendar": {
+      "types": "./dist/subpaths/calendar.d.ts",
+      "import": "./dist/subpaths/calendar.js",
+      "require": "./dist/subpaths/calendar.cjs"
+    },
+    "./card": {
+      "types": "./dist/subpaths/card.d.ts",
+      "import": "./dist/subpaths/card.js",
+      "require": "./dist/subpaths/card.cjs"
+    },
+    "./page-header": {
+      "types": "./dist/subpaths/page-header.d.ts",
+      "import": "./dist/subpaths/page-header.js",
+      "require": "./dist/subpaths/page-header.cjs"
+    },
+    "./error-boundary": {
+      "types": "./dist/subpaths/error-boundary.d.ts",
+      "import": "./dist/subpaths/error-boundary.js",
+      "require": "./dist/subpaths/error-boundary.cjs"
+    },
+    "./theme": {
+      "types": "./dist/subpaths/theme.d.ts",
+      "import": "./dist/subpaths/theme.js",
+      "require": "./dist/subpaths/theme.cjs"
+    },
+    "./utils": {
+      "types": "./dist/subpaths/utils.d.ts",
+      "import": "./dist/subpaths/utils.js",
+      "require": "./dist/subpaths/utils.cjs"
     }
   },
   "files": [
-    "src"
+    "dist"
   ],
-  "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "dev": "vite --port 4700",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite --config vite.lib.config.ts build",
+    "build:app": "tsc -b && vite build",
+    "gen:subpaths": "node scripts/gen-subpaths.mjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --port 4700 --host",
     "prettier:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,css,md,json}'",
@@ -49,20 +248,19 @@
       "pre-commit": "yarn run lint:fix && yarn run prettier:write"
     }
   },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.12",
-    "ag-grid-community": "^35.0.1",
-    "ag-grid-react": "^35.0.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.8.2",
     "react-toastify": "^11.0.5",
-    "sass": "^1.92.1"
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
+    "@tailwindcss/vite": "^4.1.12",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
@@ -85,7 +283,11 @@
     "lint-staged": "^16.1.6",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.2",
     "rollup-plugin-visualizer": "^6.0.5",
+    "sass": "^1.92.1",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.43.0",
