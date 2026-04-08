@@ -1,11 +1,6 @@
-import { AgGridTable } from "@components/ui/AgGridTable";
 import LoadMore from "@components/ui/LoadMore";
-import {
-  Table,
-  type TableColumn,
-} from "@components/ui/Table";
+import { Table, type TableColumn } from "@components/ui/Table";
 import { TablePagination } from "@components/ui/TablePagination";
-import type { ColDef } from "ag-grid-community";
 import { useMemo, useState } from "react";
 
 import { DemoSection } from "../DemoSection";
@@ -38,15 +33,6 @@ export function DataPage(): React.ReactElement {
     [],
   );
 
-  const gridColumns: ColDef<CarRow>[] = useMemo(
-    () => [
-      { field: "make", sortable: true },
-      { field: "model", sortable: true },
-      { field: "price", sortable: true },
-    ],
-    [],
-  );
-
   return (
     <div className="mx-auto max-w-5xl space-y-12">
       <DemoSection
@@ -54,9 +40,15 @@ export function DataPage(): React.ReactElement {
         title="Table"
         description="Client-side sort, selection, striped rows, empty state."
         props={[
-          { name: "columns / data", description: "TableColumn[] and row objects with id." },
+          {
+            name: "columns / data",
+            description: "TableColumn[] and row objects with id.",
+          },
           { name: "sortMode", description: "client | remote" },
-          { name: "selectable / selectedRows / onRowSelect", description: "Row selection." },
+          {
+            name: "selectable / selectedRows / onRowSelect",
+            description: "Row selection.",
+          },
         ]}
       >
         <Table<CarRow>
@@ -71,9 +63,15 @@ export function DataPage(): React.ReactElement {
         id="table-pagination"
         title="TablePagination"
         props={[
-          { name: "currentPage / totalPages / pageSize / totalItems", description: "Paging model." },
+          {
+            name: "currentPage / totalPages / pageSize / totalItems",
+            description: "Paging model.",
+          },
           { name: "onPageChange", description: "(page: number) => void" },
-          { name: "onPageSizeChange", description: "Optional page size dropdown." },
+          {
+            name: "onPageSizeChange",
+            description: "Optional page size dropdown.",
+          },
         ]}
       >
         <TablePagination
@@ -91,7 +89,10 @@ export function DataPage(): React.ReactElement {
         title="LoadMore"
         description="End-of-list indicator; parent typically appends rows when user scrolls."
         props={[
-          { name: "currentPage / totalPages / pageSize / totalItems", description: "Progress copy." },
+          {
+            name: "currentPage / totalPages / pageSize / totalItems",
+            description: "Progress copy.",
+          },
           { name: "loading", description: "Shows spinner state." },
         ]}
       >
@@ -108,27 +109,6 @@ export function DataPage(): React.ReactElement {
             pageSize={10}
             totalItems={25}
             loading
-          />
-        </div>
-      </DemoSection>
-
-      <DemoSection
-        id="ag-grid"
-        title="AgGridTable"
-        description="Wraps ag-grid-react with shared theme class and optional server pagination."
-        props={[
-          { name: "columnDefs / rowData / getRowId", description: "Standard AG Grid contract." },
-          { name: "height", description: "Pixel height of the grid body." },
-          { name: "pagination", description: "Built-in pagination UI when client-side." },
-        ]}
-      >
-        <div className="h-[360px] w-full min-w-0">
-          <AgGridTable<CarRow>
-            rowData={carData}
-            columnDefs={gridColumns}
-            getRowId={(row) => row.id}
-            height={360}
-            pagination={false}
           />
         </div>
       </DemoSection>
