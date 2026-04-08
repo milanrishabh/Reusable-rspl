@@ -1,10 +1,12 @@
 {
   "name": "@rspl/react-reusable-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shared React 19 UI primitives powered by Tailwind CSS v4.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
+  "license": "MIT",
+  "private": false,
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
@@ -231,8 +233,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "prepare": "husky"
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
