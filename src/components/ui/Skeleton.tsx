@@ -7,7 +7,10 @@ interface SkeletonProps {
 export const Skeleton = ({ className }: SkeletonProps) => {
   return (
     <div
-      className={cn("animate-pulse rounded-md bg-rspl-neutral-100", className)}
+      className={cn(
+        "animate-pulse rounded-md bg-rspl-neutral-100 dark:bg-rspl-neutral-800",
+        className,
+      )}
     />
   );
 };

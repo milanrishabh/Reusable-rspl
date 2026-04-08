@@ -180,7 +180,7 @@ export function Tooltip({
           <div
             ref={tooltipRef}
             className={clsx(
-              "fixed z-9999 px-2 py-1 text-sm text-rspl-neutral-500 bg-white border border-rspl-neutral-100 rounded-md whitespace-nowrap shadow-lg pointer-events-none",
+              "fixed z-9999 px-2 py-1 text-sm text-rspl-neutral-500 dark:text-rspl-neutral-200 bg-white dark:bg-rspl-neutral-800 border border-rspl-neutral-100 dark:border-rspl-neutral-700 rounded-md whitespace-nowrap shadow-lg pointer-events-none",
               className,
             )}
             style={{

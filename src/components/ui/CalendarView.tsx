@@ -136,8 +136,11 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
       className={clsx(
         "relative min-h-[100px] border-b border-r border-container-border p-2 transition-colors",
         !disabled && "cursor-pointer",
-        disabled && "cursor-not-allowed opacity-50 bg-rspl-neutral-50",
-        !isCurrentMonth && !disabled && "bg-rspl-neutral-50",
+        disabled &&
+          "cursor-not-allowed opacity-50 bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
+        !isCurrentMonth &&
+          !disabled &&
+          "bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
         isCurrentMonth &&
           !disabled &&
           event?.backgroundColor &&
@@ -146,10 +149,12 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
           highlightSelected &&
           !disabled &&
           "ring-2 ring-inset ring-blue-500 ring-dashed",
-        !event?.backgroundColor && !disabled && "hover:bg-rspl-neutral-50",
+        !event?.backgroundColor &&
+          !disabled &&
+          "hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700",
         !isCurrentMonth &&
           !disabled &&
-          "text-rspl-neutral-400 pointer-events-none bg-rspl-neutral-50",
+          "text-rspl-neutral-400 dark:text-rspl-neutral-500 pointer-events-none bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
       )}
       onClick={disabled ? undefined : onClick}
     >
@@ -157,8 +162,11 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
       <div
         className={clsx(
           "text-sm font-medium mb-1",
-          (!isCurrentMonth || disabled) && "text-rspl-neutral-400",
-          isCurrentMonth && !disabled && "text-rspl-neutral-900",
+          (!isCurrentMonth || disabled) &&
+            "text-rspl-neutral-400 dark:text-rspl-neutral-500",
+          isCurrentMonth &&
+            !disabled &&
+            "text-rspl-neutral-900 dark:text-rspl-neutral-100",
           isToday && highlightToday && !disabled && "text-blue-600",
         )}
       >
@@ -203,13 +211,16 @@ const GridCell: React.FC<GridCellProps> = ({
       className={clsx(
         "relative h-[48px] w-full border-b border-r border-container-border p-2 transition-colors flex items-center",
         !disabled && "cursor-pointer",
-        disabled && "cursor-not-allowed opacity-50 bg-rspl-neutral-50",
+        disabled &&
+          "cursor-not-allowed opacity-50 bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
         cellData?.backgroundColor && !disabled && cellData.backgroundColor,
         isSelected &&
           highlightSelected &&
           !disabled &&
           "ring-2 ring-inset ring-blue-500 ring-dashed",
-        !cellData?.backgroundColor && !disabled && "hover:bg-rspl-neutral-50",
+        !cellData?.backgroundColor &&
+          !disabled &&
+          "hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700",
       )}
       onClick={disabled ? undefined : onClick}
     >
@@ -229,6 +240,7 @@ const RowLabelCell: React.FC<RowLabelCellProps> = ({ row, className }) => {
     <div
       className={clsx(
         "h-[48px] border-b border-r border-container-border p-2 flex flex-col justify-center bg-white",
+        "dark:bg-rspl-neutral-900",
         className,
       )}
     >
@@ -242,7 +254,7 @@ const RowLabelCell: React.FC<RowLabelCellProps> = ({ row, className }) => {
             </div>
           )}
           <Tooltip content={row.label} position="right">
-            <div className="text-sm font-medium text-rspl-neutral-900 truncate">
+            <div className="text-sm font-medium text-rspl-neutral-900 dark:text-rspl-neutral-100 truncate">
               {row.label}
             </div>
           </Tooltip>
@@ -286,13 +298,16 @@ const HourlyCell: React.FC<HourlyCellProps> = ({
       className={clsx(
         "min-h-[80px] w-full border-b border-r border-container-border p-2 transition-colors",
         !disabled && "cursor-pointer",
-        disabled && "cursor-not-allowed opacity-50 bg-rspl-neutral-50",
+        disabled &&
+          "cursor-not-allowed opacity-50 bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
         event?.backgroundColor && !disabled && event.backgroundColor,
         isSelected &&
           highlightSelected &&
           !disabled &&
           "ring-2 ring-inset ring-blue-500 ring-dashed",
-        !event?.backgroundColor && !disabled && "hover:bg-rspl-neutral-50",
+        !event?.backgroundColor &&
+          !disabled &&
+          "hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700",
       )}
       onClick={disabled ? undefined : onClick}
     >
@@ -319,7 +334,7 @@ const ViewToggle: React.FC<ViewToggleProps> = ({
 
   return (
     <div
-      className="flex items-center bg-rspl-neutral-50 rounded-lg p-1"
+      className="flex items-center bg-rspl-neutral-50 dark:bg-rspl-neutral-800 rounded-lg p-1"
       role="group"
       aria-label="Calendar view"
     >
@@ -333,7 +348,7 @@ const ViewToggle: React.FC<ViewToggleProps> = ({
             "px-4 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer",
             viewMode === mode
               ? "bg-rspl-primary-500 text-white shadow-sm"
-              : "text-rspl-neutral-600 hover:text-rspl-neutral-900 hover:bg-rspl-neutral-200",
+              : "text-rspl-neutral-600 dark:text-rspl-neutral-300 hover:text-rspl-neutral-900 dark:hover:text-rspl-neutral-100 hover:bg-rspl-neutral-200 dark:hover:bg-rspl-neutral-700",
           )}
         >
           {label}
@@ -349,19 +364,22 @@ export interface ColorPaletteInfo {
 }
 
 const COLOR_PALETTE_CLASS_MAP: Record<string, string> = {
-  "rspl-primary-50": "bg-rspl-primary-50",
-  "rspl-primary-100": "bg-rspl-primary-100",
-  "rspl-error-50": "bg-rspl-error-50",
-  "rspl-error-100": "bg-rspl-error-100",
-  "rspl-neutral-50": "bg-rspl-neutral-50",
-  "rspl-neutral-100": "bg-rspl-neutral-100",
+  "rspl-primary-50": "bg-rspl-primary-50 dark:bg-rspl-primary-900/20",
+  "rspl-primary-100": "bg-rspl-primary-100 dark:bg-rspl-primary-900/30",
+  "rspl-error-50": "bg-rspl-error-50 dark:bg-rspl-error-900/20",
+  "rspl-error-100": "bg-rspl-error-100 dark:bg-rspl-error-900/30",
+  "rspl-neutral-50": "bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
+  "rspl-neutral-100": "bg-rspl-neutral-100 dark:bg-rspl-neutral-700",
   "emerald-50": "bg-emerald-50",
   "emerald-100": "bg-emerald-100",
-  white: "bg-white",
+  white: "bg-white dark:bg-rspl-neutral-900",
 };
 
 function getColorBoxClass(colorKey: string): string {
-  return COLOR_PALETTE_CLASS_MAP[colorKey] ?? "bg-rspl-neutral-100";
+  return (
+    COLOR_PALETTE_CLASS_MAP[colorKey] ??
+    "bg-rspl-neutral-100 dark:bg-rspl-neutral-700"
+  );
 }
 
 // Navigation Header
@@ -398,7 +416,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         })}
       >
         {calendarTitle && (
-          <div className="text-m font-medium text-rspl-neutral-800">
+          <div className="text-m font-medium text-rspl-neutral-800 dark:text-rspl-neutral-100">
             {calendarTitle}
           </div>
         )}
@@ -425,7 +443,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
                     getColorBoxClass(colorInfo.color),
                   )}
                 />
-                <span className="color-label text-rspl-neutral-500 text-xs">
+                <span className="color-label text-rspl-neutral-500 dark:text-rspl-neutral-400 text-xs">
                   {colorInfo.label}
                 </span>
               </div>
@@ -442,13 +460,15 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
               "p-2 rounded-lg transition-colors",
               disablePrevious
                 ? "cursor-not-allowed opacity-50"
-                : "hover:bg-rspl-neutral-100 cursor-pointer",
+                : "hover:bg-rspl-neutral-100 dark:hover:bg-rspl-neutral-700 cursor-pointer",
             )}
             aria-label="Previous period"
           >
-            <ChevronLeft className="w-5 h-5 text-rspl-neutral-600" />
+            <ChevronLeft className="w-5 h-5 text-rspl-neutral-600 dark:text-rspl-neutral-300" />
           </Button>
-          <span className="text-xs font-medium text-black px-2">{title}</span>
+          <span className="text-xs font-medium text-black dark:text-rspl-neutral-100 px-2">
+            {title}
+          </span>
           <Button
             variant="outline"
             size="iconMd"
@@ -458,11 +478,11 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
               "p-2 rounded-lg transition-colors",
               disableNext
                 ? "cursor-not-allowed opacity-50"
-                : "hover:bg-rspl-neutral-100 cursor-pointer",
+                : "hover:bg-rspl-neutral-100 dark:hover:bg-rspl-neutral-700 cursor-pointer",
             )}
             aria-label="Next period"
           >
-            <ChevronRight className="w-5 h-5 text-rspl-neutral-600" />
+            <ChevronRight className="w-5 h-5 text-rspl-neutral-600 dark:text-rspl-neutral-300" />
           </Button>
         </div>
       </div>
@@ -562,13 +582,13 @@ const MonthlyView: React.FC<MonthlyViewProps> = ({
   );
 
   return (
-    <div className="flex-1 flex flex-col border border-rspl-neutral-200 rounded-lg overflow-hidden">
+    <div className="flex-1 flex flex-col border border-rspl-neutral-200 dark:border-rspl-neutral-700 rounded-lg overflow-hidden">
       {/* Day headers */}
-      <div className="grid grid-cols-7 bg-rspl-neutral-50 border-b border-rspl-neutral-200">
+      <div className="grid grid-cols-7 bg-rspl-neutral-50 dark:bg-rspl-neutral-800 border-b border-rspl-neutral-200 dark:border-rspl-neutral-700">
         {dayHeaders.map((day) => (
           <div
             key={day}
-            className="py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 border-r last:border-r-0 border-rspl-neutral-200"
+            className="py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300 border-r last:border-r-0 border-rspl-neutral-200 dark:border-rspl-neutral-700"
           >
             {day}
           </div>
@@ -684,10 +704,10 @@ const WeeklyView: React.FC<WeeklyViewProps> = ({
   // If we have rows and detail column, render multi-row grid
   if (showDetailColumn && rows.length > 0) {
     return (
-      <div className="flex-1 flex flex-col border border-rspl-neutral-200 rounded-lg overflow-hidden">
+      <div className="flex-1 flex flex-col border border-rspl-neutral-200 dark:border-rspl-neutral-700 rounded-lg overflow-hidden">
         {/* Header row */}
         <div
-          className="grid bg-rspl-neutral-50 border-b border-rspl-neutral-200"
+          className="grid bg-rspl-neutral-50 dark:bg-rspl-neutral-800 border-b border-rspl-neutral-200 dark:border-rspl-neutral-700"
           style={{
             gridTemplateColumns: `${detailWidth} repeat(7, 1fr)`,
           }}
@@ -695,7 +715,7 @@ const WeeklyView: React.FC<WeeklyViewProps> = ({
           {/* Detail column header */}
           <div
             className={clsx(
-              "py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 border-r border-rspl-neutral-200",
+              "py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300 border-r border-rspl-neutral-200 dark:border-rspl-neutral-700",
               detailColumnConfig?.className,
             )}
           >
@@ -708,12 +728,12 @@ const WeeklyView: React.FC<WeeklyViewProps> = ({
             return (
               <div
                 key={date.toISOString()}
-                className="py-3 px-2 text-center border-r last:border-r-0 border-rspl-neutral-200"
+                className="py-3 px-2 text-center border-r last:border-r-0 border-rspl-neutral-200 dark:border-rspl-neutral-700"
               >
-                <div className="text-sm font-medium text-rspl-neutral-600">
+                <div className="text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300">
                   {dayName}
                 </div>
-                <div className="text-lg font-semibold text-rspl-neutral-900">
+                <div className="text-lg font-semibold text-rspl-neutral-900 dark:text-rspl-neutral-100">
                   {dayNumber}
                 </div>
               </div>
@@ -767,16 +787,16 @@ const WeeklyView: React.FC<WeeklyViewProps> = ({
 
   // Default single-row weekly view
   return (
-    <div className="flex-1 flex flex-col border border-rspl-neutral-200 rounded-lg overflow-hidden">
+    <div className="flex-1 flex flex-col border border-rspl-neutral-200 dark:border-rspl-neutral-700 rounded-lg overflow-hidden">
       {/* Day headers */}
-      <div className="grid grid-cols-7 bg-rspl-neutral-50 border-b border-rspl-neutral-200">
+      <div className="grid grid-cols-7 bg-rspl-neutral-50 dark:bg-rspl-neutral-800 border-b border-rspl-neutral-200 dark:border-rspl-neutral-700">
         {weekDays.map((date) => {
           const dayName = DAY_NAMES_SHORT[date.getDay()];
           const dayNumber = date.getDate();
           return (
             <div
               key={date.toISOString()}
-              className="py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 border-r last:border-r-0 border-rspl-neutral-200"
+              className="py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300 border-r last:border-r-0 border-rspl-neutral-200 dark:border-rspl-neutral-700"
             >
               {dayName} {dayNumber}
             </div>
@@ -875,14 +895,14 @@ const DailyView: React.FC<DailyViewProps> = ({
   // If we have rows and detail column, render multi-row grid
   if (showDetailColumn && rows.length > 0) {
     return (
-      <div className="flex-1 border border-rspl-neutral-200 rounded-lg overflow-hidden">
+      <div className="flex-1 border border-rspl-neutral-200 dark:border-rspl-neutral-700 rounded-lg overflow-hidden">
         <div className="h-full w-full overflow-auto scrollbar-thin">
           {/* Header row */}
-          <div className="flex bg-rspl-neutral-50 border-b border-rspl-neutral-200 min-w-max">
+          <div className="flex bg-rspl-neutral-50 dark:bg-rspl-neutral-800 border-b border-rspl-neutral-200 dark:border-rspl-neutral-700 min-w-max">
             {/* Detail column header */}
             <div
               className={clsx(
-                "py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 border-r border-rspl-neutral-200 shrink-0",
+                "py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300 border-r border-rspl-neutral-200 dark:border-rspl-neutral-700 shrink-0",
                 detailColumnConfig?.className,
               )}
               style={{ width: detailWidth, minWidth: detailWidth }}
@@ -893,7 +913,7 @@ const DailyView: React.FC<DailyViewProps> = ({
             {hours.map((hour) => (
               <div
                 key={hour}
-                className="w-[80px] shrink-0 py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 border-r last:border-r-0 border-rspl-neutral-200"
+                className="w-[80px] shrink-0 py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300 border-r last:border-r-0 border-rspl-neutral-200 dark:border-rspl-neutral-700"
               >
                 {String(hour).padStart(2, "0")}:00
               </div>
@@ -940,14 +960,14 @@ const DailyView: React.FC<DailyViewProps> = ({
 
   // Default single-row daily view
   return (
-    <div className="flex-1 flex flex-col border border-rspl-neutral-200 rounded-lg overflow-hidden">
+    <div className="flex-1 flex flex-col border border-rspl-neutral-200 dark:border-rspl-neutral-700 rounded-lg overflow-hidden">
       <div className="h-full w-full overflow-auto scrollbar-thin">
         {/* Hour headers */}
-        <div className="flex bg-rspl-neutral-50 border-b border-rspl-neutral-200 min-w-max">
+        <div className="flex bg-rspl-neutral-50 dark:bg-rspl-neutral-800 border-b border-rspl-neutral-200 dark:border-rspl-neutral-700 min-w-max">
           {hours.map((hour) => (
             <div
               key={hour}
-              className="w-[100px] shrink-0 py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 border-r last:border-r-0 border-rspl-neutral-200"
+              className="w-[100px] shrink-0 py-3 px-2 text-center text-sm font-medium text-rspl-neutral-600 dark:text-rspl-neutral-300 border-r last:border-r-0 border-rspl-neutral-200 dark:border-rspl-neutral-700"
             >
               {String(hour).padStart(2, "0")}:00
             </div>

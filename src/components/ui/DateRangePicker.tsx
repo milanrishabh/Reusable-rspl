@@ -1,7 +1,11 @@
 import { useClickOutside } from "@lib/hooks/useClickOutside";
 import { type DateRange } from "@lib/types/dateRange";
-import { isSameDay, isDateBetween, formatDisplayDate } from "@lib/utils/dateUtils";
 import { cn } from "@lib/utils/cn";
+import {
+  isSameDay,
+  isDateBetween,
+  formatDisplayDate,
+} from "@lib/utils/dateUtils";
 import {
   Calendar,
   ChevronLeft,
@@ -154,7 +158,7 @@ function CalendarMonth({
   return (
     <div className="w-80 flex flex-col justify-start items-start overflow-hidden">
       {/* Header */}
-      <div className="self-stretch  h-10 min-h-10 relative bg-white border-b border-t border-rspl-neutral-100">
+      <div className="self-stretch  h-10 min-h-10 relative bg-white dark:bg-rspl-neutral-800 border-b border-t border-rspl-neutral-100 dark:border-rspl-neutral-700">
         <button
           onClick={() => {
             const newMonth = new Date(
@@ -184,7 +188,7 @@ function CalendarMonth({
         </button>
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <div className="text-xs font-medium leading-4 text-black">
+          <div className="text-xs font-medium leading-4 text-black dark:text-rspl-neutral-100">
             {monthNames[currentMonth.getMonth()].slice(0, 3)}{" "}
             {currentMonth.getFullYear()}
           </div>
@@ -220,13 +224,13 @@ function CalendarMonth({
       </div>
 
       {/* Calendar Content */}
-      <div className="self-stretch px-3 py-2 bg-white flex flex-col justify-start items-start gap-2.5 overflow-hidden">
+      <div className="self-stretch px-3 py-2 bg-white dark:bg-rspl-neutral-800 flex flex-col justify-start items-start gap-2.5 overflow-hidden">
         {/* Week days */}
         <div className="self-stretch inline-flex justify-between items-center overflow-hidden">
           {weekDays.map((day) => (
             <div
               key={day}
-              className="w-9 h-7 text-center justify-center text-black text-xs font-normal leading-4"
+              className="w-9 h-7 text-center justify-center text-black dark:text-rspl-neutral-300 text-xs font-normal leading-4"
             >
               {day}
             </div>
@@ -274,13 +278,13 @@ function CalendarMonth({
                         )}
                       >
                         {isBetween && (
-                          <div className="w-9 h-6 left-[-7px] top-0 absolute bg-rspl-primary-50" />
+                          <div className="w-9 h-6 left-[-7px] top-0 absolute bg-rspl-primary-50 dark:bg-rspl-primary-900/20" />
                         )}
                         {isRangeStart && (
-                          <div className="w-8 h-6 left-0 top-0 absolute bg-rspl-primary-50 rounded-tl-sm rounded-bl-sm" />
+                          <div className="w-8 h-6 left-0 top-0 absolute bg-rspl-primary-50 dark:bg-rspl-primary-900/20 rounded-tl-sm rounded-bl-sm" />
                         )}
                         {isRangeEnd && (
-                          <div className="w-8 h-6 left-[-8px] top-0 absolute bg-rspl-primary-50 rounded-tr-sm rounded-br-sm" />
+                          <div className="w-8 h-6 left-[-8px] top-0 absolute bg-rspl-primary-50 dark:bg-rspl-primary-900/20 rounded-tr-sm rounded-br-sm" />
                         )}
                         <button
                           onClick={() => !isDisabled && onDateSelect(date)}
@@ -294,8 +298,10 @@ function CalendarMonth({
                             !isSelected &&
                               !isCurrentMonth &&
                               !isBetween &&
-                              "text-rspl-neutral-500 bg-white",
-                            !isSelected && isCurrentMonth && "text-black",
+                              "text-rspl-neutral-500 dark:text-rspl-neutral-500 bg-white dark:bg-rspl-neutral-800",
+                            !isSelected &&
+                              isCurrentMonth &&
+                              "text-black dark:text-rspl-neutral-100",
                             isToday &&
                               !isSelected &&
                               "outline -outline-offset-1 outline-rspl-primary-500",
@@ -510,18 +516,18 @@ export function DateRangePicker({
             {presets.length > 0 && (
               <div
                 id={`${pickerId}-presets`}
-                className="self-stretch rounded-tl-lg rounded-bl-lg outline -outline-offset-1 outline-rspl-neutral-100 inline-flex flex-col justify-start items-start overflow-hidden"
+                className="self-stretch rounded-tl-lg rounded-bl-lg outline -outline-offset-1 outline-rspl-neutral-100 dark:outline-rspl-neutral-700 inline-flex flex-col justify-start items-start overflow-hidden"
               >
-                <div className="self-stretch px-5 py-3 bg-white rounded-tl-lg border-b border-rspl-neutral-100 flex flex-col justify-start items-start gap-2.5 overflow-hidden">
+                <div className="self-stretch px-5 py-3 bg-white dark:bg-rspl-neutral-800 rounded-tl-lg border-b border-rspl-neutral-100 dark:border-rspl-neutral-700 flex flex-col justify-start items-start gap-2.5 overflow-hidden">
                   <div className="inline-flex justify-start items-center gap-2 overflow-hidden">
                     <div className="flex justify-start items-center gap-2.5">
-                      <div className="justify-center text-black text-xs font-medium leading-4">
+                      <div className="justify-center text-black dark:text-rspl-neutral-100 text-xs font-medium leading-4">
                         Quick Select
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="self-stretch flex-1 px-3.5 py-2 bg-white flex flex-col justify-start items-center gap-2.5 overflow-hidden">
+                <div className="self-stretch flex-1 px-3.5 py-2 bg-white dark:bg-rspl-neutral-800 flex flex-col justify-start items-center gap-2.5 overflow-hidden">
                   <div className="w-24 rounded flex flex-col justify-start items-start">
                     {presets.map((preset, index) => (
                       <div
@@ -533,7 +539,7 @@ export function DateRangePicker({
                           onClick={() => handlePresetSelect(preset)}
                           className="self-stretch p-2 inline-flex justify-start items-center gap-2 hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700 rounded cursor-pointer"
                         >
-                          <div className="justify-center text-black text-xs font-normal leading-4 line-clamp-1">
+                          <div className="justify-center text-black dark:text-rspl-neutral-200 text-xs font-normal leading-4 line-clamp-1">
                             {preset.label}
                           </div>
                         </button>
@@ -545,7 +551,7 @@ export function DateRangePicker({
             )}
             {/* Calendar */}
             <div className="flex">
-              <div className="border-r border-rspl-neutral-100">
+              <div className="border-r border-rspl-neutral-100 dark:border-rspl-neutral-700">
                 <CalendarMonth
                   currentMonth={currentMonth}
                   selectedRange={selectedRange}

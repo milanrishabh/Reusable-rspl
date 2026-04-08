@@ -116,7 +116,12 @@ export function FeedbackPage(): React.ReactElement {
           { name: "layout", description: "default | figma | alignPercentage" },
         ]}
       >
-        <Progress value={62} showLabel={false} showInfo={false} className="w-full" />
+        <Progress
+          value={62}
+          showLabel={false}
+          showInfo={false}
+          className="w-full"
+        />
       </DemoSection>
 
       <DemoSection
@@ -125,14 +130,24 @@ export function FeedbackPage(): React.ReactElement {
         description="Supports values above 100 with a second segment."
         props={[
           { name: "value / maxValue", description: "Numeric progress model." },
-          { name: "variant", description: "default | success | warning | error | …" },
+          {
+            name: "variant",
+            description: "default | success | warning | error | …",
+          },
           { name: "infoText", description: "Tooltip helper via Tooltip." },
         ]}
       >
         <div className="space-y-6 w-full">
-          <DynamicProgressBar value={progress} label="Budget" infoText="Info" className="w-full" />
+          <DynamicProgressBar
+            value={progress}
+            label="Budget"
+            infoText="Info"
+            className="w-full"
+          />
           <label className="flex items-center gap-2 text-sm">
-            <span>Value: {progress}</span>
+            <span className="dark:text-rspl-neutral-200">
+              Value: {progress}
+            </span>
             <input
               type="range"
               min={0}

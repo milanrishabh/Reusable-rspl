@@ -358,7 +358,7 @@ export function RemoteDropdown<T extends DropdownOption = DropdownOption>({
       <div
         className={clsx(
           "flex items-center gap-3 px-3 py-2 cursor-pointer",
-          "hover:bg-rspl-neutral-50",
+          "hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700",
           selected && "bg-rspl-primary-50 dark:bg-rspl-primary-900/30",
           option.disabled && "opacity-50 cursor-not-allowed",
         )}
@@ -419,7 +419,7 @@ export function RemoteDropdown<T extends DropdownOption = DropdownOption>({
           "focus:outline-none focus:ring-1 focus:ring-rspl-primary-500 focus:border-transparent",
           "transition-colors duration-150",
           disabled
-            ? "bg-rspl-neutral-50 text-rspl-neutral-400 cursor-not-allowed border-rspl-neutral-100"
+            ? "bg-rspl-neutral-50 dark:bg-rspl-neutral-900 text-rspl-neutral-400 dark:text-rspl-neutral-600 cursor-not-allowed border-rspl-neutral-100 dark:border-rspl-neutral-700"
             : "bg-white dark:bg-rspl-neutral-800 text-rspl-neutral-500 dark:text-rspl-neutral-300 border-rspl-neutral-100 dark:border-rspl-neutral-600",
           isOpen && "ring-1 ring-rspl-primary-500 border-rspl-primary-500",
         )}
@@ -503,7 +503,7 @@ export function RemoteDropdown<T extends DropdownOption = DropdownOption>({
                           "absolute right-2 top-1/2 -translate-y-1/2",
                           "w-5 h-5 flex items-center justify-center",
                           "text-rspl-neutral-400",
-                          "rounded-full hover:bg-rspl-neutral-100",
+                          "rounded-full hover:bg-rspl-neutral-100 dark:hover:bg-rspl-neutral-700",
                           "transition-colors duration-150",
                         )}
                         aria-label="Clear search"
@@ -538,7 +538,7 @@ export function RemoteDropdown<T extends DropdownOption = DropdownOption>({
                     ) : (
                       <div className="flex flex-col items-center py-4 text-center">
                         <AlertCircle className="h-8 w-8 text-rspl-error-500 mb-2" />
-                        <p className="text-sm text-rspl-neutral-600 mb-3">
+                        <p className="mb-3 text-sm text-rspl-neutral-600 dark:text-rspl-neutral-300">
                           {error.message}
                         </p>
                         <button
@@ -578,7 +578,7 @@ export function RemoteDropdown<T extends DropdownOption = DropdownOption>({
                         }
                         role="option"
                         aria-selected={isSelected(option)}
-                        className="hover:bg-rspl-neutral-50 cursor-pointer"
+                        className="hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700 cursor-pointer"
                       >
                         {renderOptionItem(option)}
                       </div>

@@ -42,15 +42,15 @@ const progressSizes = {
 };
 
 const progressTrackVariants = {
-  default: "bg-rspl-neutral-50",
-  success: "bg-rspl-success-50",
-  warning: "bg-rspl-warning-50",
-  error: "bg-rspl-error-50",
-  teal: "bg-rspl-cyan-50",
-  lightGreen: "bg-rspl-lime-50",
-  orange: "bg-rspl-peach-50",
-  secondary: "bg-rspl-secondary-50",
-  white: "bg-white",
+  default: "bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
+  success: "bg-rspl-success-50 dark:bg-rspl-success-900/20",
+  warning: "bg-rspl-warning-50 dark:bg-rspl-warning-900/20",
+  error: "bg-rspl-error-50 dark:bg-rspl-error-900/20",
+  teal: "bg-rspl-cyan-50 dark:bg-rspl-teal-600/20",
+  lightGreen: "bg-rspl-lime-50 dark:bg-rspl-success-900/20",
+  orange: "bg-rspl-peach-50 dark:bg-rspl-orange-warning-900/20",
+  secondary: "bg-rspl-secondary-50 dark:bg-rspl-secondary-900/20",
+  white: "bg-white dark:bg-rspl-neutral-900",
 };
 
 const progressVariants = {
@@ -99,6 +99,7 @@ export const Progress: React.FC<ProgressProps> = ({
               <p
                 className={clsx(
                   "text-rspl-neutral-500 text-sm leading-none",
+                  "dark:text-rspl-neutral-400",
                   labelClassNames,
                 )}
               >
@@ -132,7 +133,7 @@ export const Progress: React.FC<ProgressProps> = ({
           {showPercentage && (
             <div
               className={clsx(
-                "text-right justify-start text-black text-sm font-normal leading-none",
+                "text-right justify-start text-black dark:text-rspl-neutral-100 text-sm font-normal leading-none",
                 percentageLabelClassNames,
               )}
             >

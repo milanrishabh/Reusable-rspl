@@ -12,10 +12,13 @@ export interface AlertProps {
 }
 
 const variantStyles: Record<AlertVariant, string> = {
-  info: "bg-rspl-info-50 border-rspl-info-200 text-rspl-info-700",
-  success: "bg-rspl-success-50 border-rspl-success-200 text-rspl-success-700",
-  warning: "bg-rspl-warning-50 border-rspl-warning-200 text-rspl-warning-700",
-  error: "bg-rspl-error-50 border-rspl-error-200 text-rspl-error-700",
+  info: "bg-rspl-info-50 border-rspl-info-200 text-rspl-info-700 dark:bg-rspl-info-900/20 dark:border-rspl-info-700 dark:text-rspl-info-300",
+  success:
+    "bg-rspl-success-50 border-rspl-success-200 text-rspl-success-700 dark:bg-rspl-success-900/20 dark:border-rspl-success-700 dark:text-rspl-success-300",
+  warning:
+    "bg-rspl-warning-50 border-rspl-warning-200 text-rspl-warning-700 dark:bg-rspl-warning-900/20 dark:border-rspl-warning-700 dark:text-rspl-warning-300",
+  error:
+    "bg-rspl-error-50 border-rspl-error-200 text-rspl-error-700 dark:bg-rspl-error-900/20 dark:border-rspl-error-700 dark:text-rspl-error-300",
 };
 
 const variantIcons: Record<AlertVariant, React.ReactNode> = {

@@ -117,7 +117,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         </div>
 
         {isOpen && (
-          <div className="absolute z-50 mt-2 p-4 bg-white border border-rspl-neutral-100 rounded-md shadow-lg min-w-[320px]">
+          <div className="absolute z-50 mt-2 min-w-[320px] rounded-md border border-rspl-neutral-100 dark:border-rspl-neutral-700 bg-white dark:bg-rspl-neutral-800 p-4 shadow-lg">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
                 <Label>Start Date</Label>
@@ -125,7 +125,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                   type="date"
                   value={startDate}
                   onChange={(e) => handleDateChange("start", e.target.value)}
-                  className="w-full px-2 py-1 text-sm border border-rspl-neutral-100 rounded focus:outline-none focus:ring-1 focus:ring-rspl-primary-500"
+                  className="w-full rounded border border-rspl-neutral-100 dark:border-rspl-neutral-600 bg-white dark:bg-rspl-neutral-900 px-2 py-1 text-sm text-rspl-neutral-900 dark:text-rspl-neutral-100 focus:outline-none focus:ring-1 focus:ring-rspl-primary-500"
                 />
               </div>
               <div>
@@ -135,7 +135,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                   value={endDate}
                   onChange={(e) => handleDateChange("end", e.target.value)}
                   min={startDate}
-                  className="w-full px-2 py-1 text-sm border border-rspl-neutral-100 rounded focus:outline-none focus:ring-1 focus:ring-rspl-primary-500"
+                  className="w-full rounded border border-rspl-neutral-100 dark:border-rspl-neutral-600 bg-white dark:bg-rspl-neutral-900 px-2 py-1 text-sm text-rspl-neutral-900 dark:text-rspl-neutral-100 focus:outline-none focus:ring-1 focus:ring-rspl-primary-500"
                 />
               </div>
             </div>
@@ -143,7 +143,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="px-3 py-1 text-xs text-rspl-neutral-600 hover:text-rspl-neutral-800"
+                className="px-3 py-1 text-xs text-rspl-neutral-600 dark:text-rspl-neutral-400 hover:text-rspl-neutral-800 dark:hover:text-rspl-neutral-100"
               >
                 Cancel
               </button>
