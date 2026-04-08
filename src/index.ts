@@ -1,5 +1,8 @@
 /** Public API for the reusable UI package. */
 
+import "./styles/tailwind.css";
+import "./styles/notification.css";
+
 export { ErrorBoundary } from "./components/ErrorBoundary";
 export { PageHeader, type PageHeaderProps } from "./components/PageHeader";
 
@@ -24,7 +27,11 @@ export {
   CardContent,
   CardFooter,
 } from "./components/ui/card";
-export { Carousel, CarouselSlide, ImageCarousel } from "./components/ui/Carousel";
+export {
+  Carousel,
+  CarouselSlide,
+  ImageCarousel,
+} from "./components/ui/Carousel";
 export { Checkbox } from "./components/ui/Checkbox";
 export { Chip } from "./components/ui/Chip";
 export { DatePicker } from "./components/ui/DatePicker";
@@ -72,12 +79,7 @@ export type {
   SortDirection,
 } from "./components/ui/Table";
 export { TablePagination } from "./components/ui/TablePagination";
-export {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "./components/ui/Tabs";
+export { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/Tabs";
 export { Textarea } from "./components/ui/Textarea";
 export { Tooltip } from "./components/ui/Tooltip";
 export { default as Switch } from "./components/ui/Switch";
