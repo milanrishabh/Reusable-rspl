@@ -8,9 +8,9 @@ export function IntegrationPage(): React.ReactElement {
           Integrate the library in your app
         </h1>
         <p className="mt-2 text-sm text-rspl-neutral-600 dark:text-rspl-neutral-400">
-          Wrap your root with the same providers and global styles this demo uses.
-          Export paths assume the package is linked or copied; adjust imports to your
-          monorepo alias (for example{" "}
+          Wrap your root with the same providers and global styles this demo
+          uses. Export paths assume the package is linked or copied; adjust
+          imports to your monorepo alias (for example{" "}
           <code className="rounded bg-rspl-neutral-100 px-1 dark:bg-rspl-neutral-800">
             @components/ui/Button
           </code>
@@ -36,7 +36,7 @@ export function IntegrationPage(): React.ReactElement {
         ]}
       >
         <pre className="overflow-x-auto rounded-md bg-rspl-neutral-900 p-4 text-xs text-rspl-neutral-100">
-{`import { ToastContainer } from "react-toastify";
+          {`import { ToastContainer } from "react-toastify";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./styles/tailwind.css";
 import "./styles/notification.css";
@@ -71,7 +71,7 @@ createRoot(document.getElementById("root")!).render(
         ]}
       >
         <pre className="overflow-x-auto rounded-md bg-rspl-neutral-900 p-4 text-xs text-rspl-neutral-100">
-{`<PageHeader
+          {`<PageHeader
   title="My App"
   description="..."
   logo={<YourMark />}
@@ -94,7 +94,7 @@ createRoot(document.getElementById("root")!).render(
           {
             name: "Barrel",
             description:
-              "import { Button, Modal, Table } from \"@/index\" or your package name.",
+              'import { Button, Modal, Table } from "@/index" or your package name.',
           },
           {
             name: "CalendarView submodules",
@@ -104,17 +104,14 @@ createRoot(document.getElementById("root")!).render(
         ]}
       >
         <pre className="overflow-x-auto rounded-md bg-rspl-neutral-900 p-4 text-xs text-rspl-neutral-100">
-{`import { Button, Modal, useAnnounce } from "./index";
-import { AgGridTable } from "./index";
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";`}
+          {`import { Button, Modal, useAnnounce } from "@rspl/reusable-ui";`}
         </pre>
       </DemoSection>
 
       <DemoSection
         id="tokens"
         title="4. Design tokens (Tailwind v4)"
-        description="Theme colors live in src/styles/tailwind.css under @theme (rspl-* scales). ag-grid-overrides.css aligns the grid with the same tokens."
+        description="Theme colors live in src/styles/tailwind.css under @theme (rspl-* scales). Override CSS variables such as --color-rspl-primary-500 to brand the library for your product."
       >
         <p className="text-sm text-rspl-neutral-600 dark:text-rspl-neutral-400">
           Extend or override CSS variables such as{" "}

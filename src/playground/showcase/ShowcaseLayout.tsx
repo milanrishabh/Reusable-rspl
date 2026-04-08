@@ -1,5 +1,7 @@
 import { PageHeader } from "@components/PageHeader";
+import { useTheme } from "@lib/theme/ThemeProvider";
 import { cn } from "@lib/utils/cn";
+import { Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -26,6 +28,7 @@ function linkClassName(isActive: boolean): string {
 
 export function ShowcaseLayout(): React.ReactElement {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const { resolvedTheme, toggleTheme } = useTheme();
 
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-rspl-neutral-50 dark:bg-rspl-neutral-950">
@@ -36,12 +39,30 @@ export function ShowcaseLayout(): React.ReactElement {
           sidebarCollapsed={sidebarCollapsed}
           onSidebarToggle={() => setSidebarCollapsed((c) => !c)}
           actions={
-            <span className="text-xs text-rspl-neutral-500">
-              Import from{" "}
-              <code className="rounded bg-rspl-neutral-100 px-1.5 py-0.5 dark:bg-rspl-neutral-800">
-                src/index.ts
-              </code>
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="hidden text-xs text-rspl-neutral-500 sm:inline">
+                Import from{" "}
+                <code className="rounded bg-rspl-neutral-100 px-1.5 py-0.5 dark:bg-rspl-neutral-800">
+                  @rspl/reusable-ui
+                </code>
+              </span>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label={
+                  resolvedTheme === "dark"
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+                }
+                className="rounded-md p-2 text-rspl-neutral-600 transition-colors hover:bg-rspl-neutral-100 dark:text-rspl-neutral-300 dark:hover:bg-rspl-neutral-800"
+              >
+                {resolvedTheme === "dark" ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+              </button>
+            </div>
           }
         />
       </div>

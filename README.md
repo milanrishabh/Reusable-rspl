@@ -1,70 +1,237 @@
 # @rspl/reusable-ui
 
-Shared React UI primitives for Moving Walls products: form controls, data display, overlays, navigation helpers, and utilities. Built with **React 19**, **TypeScript**, **Vite**, and **Tailwind CSS v4**.
+A React 19 component library built with Tailwind CSS v4. 35+ production-ready components with dark mode support, runtime theming, and full TypeScript types.
 
-## Overview
+---
 
-This package exposes a stable public API from `src/index.ts` (barrel). Consumer apps import components, hooks, and helpers from the package entry (`"."` in `package.json` `exports`) or, in a monorepo, via path aliases to `src`.
+## Installation
 
-The repository ships a **local showcase** (`src/playground/showcase`) that documents integration and demonstrates components grouped by category (forms, pickers, data, overlays, navigation, media, notifications, feedback).
+```bash
+npm install @rspl/reusable-ui
+```
 
-## Using the reusable components
+**Peer dependencies** — React must be installed by your app:
 
-### 1. Dependencies
+```bash
+npm install react react-dom
+```
 
-- **Peer dependencies**: `react` and `react-dom` **^19** (see `package.json`).
-- **App-level setup** used by the showcase and recommended for consumers that rely on toasts or upload flows:
-  - Wrap the tree with **`ErrorBoundary`** (exported from the package).
-  - Mount **`ToastContainer`** from `react-toastify` once at the root (e.g. next to your app shell) so patterns like **FileUpload** and **useAnnounce** can show notifications.
+---
 
-### 2. Styles and theming
+## Setup
 
-- Import the same global layers the demo uses: Tailwind entry (`src/styles/tailwind.css`), toast/notification styles, and any shared SASS/globals your app needs.
-- Design tokens live under **`@theme`** in `src/styles/tailwind.css` (e.g. `rspl-*` color scales). Override CSS variables there to align the library with your product branding.
+### 1. Import the stylesheet
 
-### 3. Imports
+Add this once at your app root (e.g. `main.tsx`):
 
-- Prefer **barrel imports** from the package root so you stay on the public API:
+```tsx
+import "@rspl/reusable-ui/style.css";
+```
 
-  ```ts
-  import { Button, Modal, Table, PageHeader, useAnnounce } from "@rspl/reusable-ui";
-  ```
+### 2. Wrap your app with `ThemeProvider`
 
-  When developing inside this repo or with a monorepo alias, paths such as `@components/ui/Button` or `./index` resolve the same symbols—adjust to your bundler/tsconfig `paths`.
+`ThemeProvider` manages light/dark mode and optional token overrides. Place it as high in the tree as possible:
 
-- **AgGridTable**: if you use the grid, import AG Grid’s CSS themes in the app (e.g. `ag-grid-community/styles/ag-grid.css` and a theme such as `ag-theme-quartz.css`) as shown on the Integration page in the showcase.
+```tsx
+import { ThemeProvider } from "@rspl/reusable-ui";
 
-- **CalendarView**: full **`CalendarView`** is exported; lower-level pieces (**`CalendarCell`**, **`HourlyCell`**, **`GridCell`**, **`RowLabelCell`**, **`ViewToggle`**) are available for custom layouts.
+createRoot(document.getElementById("root")!).render(
+  <ThemeProvider defaultTheme="system">
+    <App />
+  </ThemeProvider>,
+);
+```
 
-### 4. Shell and routing
+---
 
-- **`PageHeader`** supports title, description, actions, optional logo, sidebar toggle props, and optional user menu wiring.
-- **Routing** (`react-router-dom`, `NavLink`, `Outlet`, etc.) is an **application concern**—it is not bundled as part of the UI package; the showcase is only an example layout.
+## Basic usage
 
-### 5. Utilities and hooks
+```tsx
+import { Button, Input, Modal } from "@rspl/reusable-ui";
 
-The barrel also exports helpers such as **`cn`**, date utilities, table sorting types/helpers, and hooks including **`useAnnounce`**, **`useClickOutside`**, and **`useDropdownPortal`** / **`useDropdownPortalSimple`**. See `src/index.ts` for the full list.
+function Example() {
+  const [open, setOpen] = useState(false);
 
-## Local development
+  return (
+    <>
+      <Input label="Name" placeholder="Enter your name" />
+      <Button onClick={() => setOpen(true)}>Open modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)} title="Hello">
+        Modal content
+      </Modal>
+    </>
+  );
+}
+```
 
-| Command | Purpose |
-| --- | --- |
-| `yarn dev` | Vite dev server (default port **4700**) |
-| `yarn build` | `tsc -b` and production build |
-| `yarn preview` | Preview production build (port **4700**) |
-| `yarn test` | Vitest |
-| `yarn test:coverage` | Coverage report |
-| `yarn lint` | ESLint |
+---
 
-Open the dev server and use the showcase routes (e.g. **Integration** at `/`, and paths under `showcase/...`) to browse live examples.
+## Tree-shakeable subpath imports
 
-## Tech stack
+Every component is available via its own subpath so bundlers only include what you use:
 
-- **UI**: React 19, Tailwind CSS 4, Lucide icons, react-hook-form / Zod where relevant to primitives
-- **Tables**: AG Grid (where `AgGridTable` is used)
-- **Build**: Vite 7, TypeScript 5
-- **Tests**: Vitest, React Testing Library, jsdom
+```tsx
+import { Button } from "@rspl/reusable-ui/button";
+import { Modal } from "@rspl/reusable-ui/modal";
+import { Table, type TableColumn } from "@rspl/reusable-ui/table";
+import { ThemeProvider, useTheme } from "@rspl/reusable-ui/theme";
+import { cn, useAnnounce } from "@rspl/reusable-ui/utils";
+```
 
-## External dependencies (summary)
+| Subpath              | Exports                                                                        |
+| -------------------- | ------------------------------------------------------------------------------ |
+| `/button`            | Button                                                                         |
+| `/input`             | Input                                                                          |
+| `/textarea`          | Textarea                                                                       |
+| `/checkbox`          | Checkbox                                                                       |
+| `/radio`             | Radio                                                                          |
+| `/switch`            | Switch                                                                         |
+| `/label`             | Label                                                                          |
+| `/slider`            | Slider                                                                         |
+| `/dropdown`          | Dropdown, DropdownItem, DropdownSeparator                                      |
+| `/multiselect`       | MultiSelect, TreeNode, MultiSelectProps                                        |
+| `/remote-dropdown`   | RemoteDropdown                                                                 |
+| `/date-picker`       | DatePicker                                                                     |
+| `/date-range-picker` | DateRangePicker                                                                |
+| `/badge`             | Badge                                                                          |
+| `/chip`              | Chip                                                                           |
+| `/spinner`           | Spinner                                                                        |
+| `/skeleton`          | Skeleton                                                                       |
+| `/progress`          | Progress, DynamicProgressBar                                                   |
+| `/alert`             | Alert                                                                          |
+| `/status-badge`      | StatusBadge                                                                    |
+| `/table`             | Table, TableCell, TableRow, TableHeader, TableGroupHeaderRow, TableSkeletonRow |
+| `/table-pagination`  | TablePagination                                                                |
+| `/load-more`         | LoadMore                                                                       |
+| `/modal`             | Modal                                                                          |
+| `/modal-drawer`      | ModalDrawer                                                                    |
+| `/tooltip`           | Tooltip                                                                        |
+| `/carousel`          | Carousel, CarouselSlide, ImageCarousel                                         |
+| `/tabs`              | Tabs, TabsList, TabsTrigger, TabsContent                                       |
+| `/stepper`           | Stepper                                                                        |
+| `/accordion`         | Accordion                                                                      |
+| `/file-upload`       | FileUpload, FileWithUploadProgress, FileUploadProps                            |
+| `/gallery`           | Gallery                                                                        |
+| `/image-fallback`    | ImageWithFallback                                                              |
+| `/calendar`          | CalendarView, CalendarCell, HourlyCell, GridCell, RowLabelCell, ViewToggle     |
+| `/card`              | Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter          |
+| `/page-header`       | PageHeader, PageHeaderProps                                                    |
+| `/error-boundary`    | ErrorBoundary                                                                  |
+| `/theme`             | ThemeProvider, useTheme, Theme, ResolvedTheme, ThemeTokens                     |
+| `/utils`             | cn, useAnnounce, useClickOutside, useDropdownPortal, date utilities            |
 
-Core runtime libraries include **react-toastify**, **clsx**, **lucide-react**, **ag-grid-react** (for `AgGridTable`), and other packages listed in `package.json`. Import only what you use from the barrel so your bundler can tree-shake unused code.
+---
+
+## Dark mode
+
+The library uses Tailwind's `class` strategy — `.dark` is applied on the `ThemeProvider` wrapper element. Components respond automatically.
+
+### Toggle between light and dark
+
+```tsx
+import { useTheme } from "@rspl/reusable-ui/theme";
+
+function ThemeToggle() {
+  const { resolvedTheme, toggleTheme } = useTheme();
+
+  return (
+    <button onClick={toggleTheme}>
+      {resolvedTheme === "dark" ? "Switch to light" : "Switch to dark"}
+    </button>
+  );
+}
+```
+
+### Set a specific theme
+
+```tsx
+const { setTheme } = useTheme();
+
+setTheme("dark"); // force dark
+setTheme("light"); // force light
+setTheme("system"); // follow OS preference (default)
+```
+
+### ThemeProvider props
+
+| Prop           | Type                            | Default        | Description                          |
+| -------------- | ------------------------------- | -------------- | ------------------------------------ |
+| `defaultTheme` | `"light" \| "dark" \| "system"` | `"system"`     | Initial theme                        |
+| `storageKey`   | `string`                        | `"rspl-theme"` | localStorage key for persistence     |
+| `tokens`       | `ThemeTokens`                   | —              | CSS variable overrides (see below)   |
+| `className`    | `string`                        | —              | Extra classes on the wrapper element |
+
+---
+
+## Runtime token overrides
+
+Every color in the library is a CSS custom property. Pass `tokens` to `ThemeProvider` to rebrand the library without a build step:
+
+```tsx
+<ThemeProvider
+  tokens={{
+    "--color-rspl-primary-500": "#7c3aed",
+    "--color-rspl-primary-600": "#6d28d9",
+    "--color-rspl-primary-700": "#5b21b6",
+    "--color-rspl-secondary-500": "#10b981",
+  }}
+>
+  <App />
+</ThemeProvider>
+```
+
+### Token families
+
+| Token family     | Example variable                  | Default                 |
+| ---------------- | --------------------------------- | ----------------------- |
+| Primary          | `--color-rspl-primary-{50–900}`   | Blue (`#2176cc` at 500) |
+| Secondary        | `--color-rspl-secondary-{50–900}` | Cyan (`#60b8e7` at 500) |
+| Neutral          | `--color-rspl-neutral-{50–900}`   | Grey                    |
+| Success          | `--color-rspl-success-{50–900}`   | Green                   |
+| Error            | `--color-rspl-error-{50–900}`     | Red                     |
+| Warning          | `--color-rspl-warning-{50–900}`   | Orange                  |
+| Container border | `--color-container-border`        | `#e2e8f0`               |
+
+---
+
+## Adding a new component
+
+1. Create `src/components/ui/YourComponent.tsx`.
+2. Export it from `src/index.ts`.
+3. Add an entry to `scripts/lib-subpaths-manifest.mjs`.
+4. Run `npm run gen:subpaths` — regenerates `src/subpaths/` files and `package.json` exports.
+5. Run `npm run build` to verify the output.
+
+---
+
+## Scripts
+
+| Script                   | Description                                      |
+| ------------------------ | ------------------------------------------------ |
+| `npm run dev`            | Start the component showcase at `localhost:4700` |
+| `npm run build`          | Build the library to `dist/`                     |
+| `npm run build:app`      | Build the showcase app                           |
+| `npm run gen:subpaths`   | Regenerate subpath files from the manifest       |
+| `npm run test`           | Run all unit tests                               |
+| `npm run test:coverage`  | Run tests with coverage report                   |
+| `npm run lint`           | Lint all TypeScript files                        |
+| `npm run prettier:write` | Auto-format all source files                     |
+
+---
+
+## Publishing
+
+```bash
+# Build and verify output
+npm run build
+npm pack --dry-run
+
+# First publish (scoped package requires --access public)
+npm publish --access public
+```
+
+---
+
+## License
+
+MIT

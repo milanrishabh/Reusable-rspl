@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import App from "./App";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { ThemeProvider } from "./lib/theme/ThemeProvider";
 
 import "./styles/tailwind.css";
 import "./styles/notification.css";
@@ -21,23 +22,25 @@ export function bootstrap(): void {
 
   root.render(
     <React.StrictMode>
-      <ErrorBoundary>
-        <App />
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          toastClassName="mb-2"
-          icon={<InfoIcon className="w-5 h-5" />}
-        />
-      </ErrorBoundary>
+      <ThemeProvider defaultTheme="system" className="h-full">
+        <ErrorBoundary>
+          <App />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            toastClassName="mb-2"
+            icon={<InfoIcon className="w-5 h-5" />}
+          />
+        </ErrorBoundary>
+      </ThemeProvider>
     </React.StrictMode>,
   );
 }
