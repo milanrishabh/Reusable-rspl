@@ -73,7 +73,7 @@ interface ChipProps {
 
 const Chip: React.FC<ChipProps> = ({ label, onRemove, disabled }) => (
   <Tooltip content={label}>
-    <span className="inline-flex items-center gap-1 px-2 py-1 text-sm rounded-md border border-rspl-neutral-100">
+    <span className="inline-flex items-center gap-1 px-2 py-1 text-sm rounded-md border border-rspl-neutral-100 dark:border-rspl-neutral-600 bg-white dark:bg-rspl-neutral-800 text-rspl-neutral-700 dark:text-rspl-neutral-200">
       <span className="truncate w-16">{label}</span>
       {!disabled && (
         <button
@@ -140,7 +140,7 @@ const Option: React.FC<OptionProps> = ({
   return (
     <>
       <div
-        className={`flex items-start py-2 px-3 hover:bg-rspl-neutral-50 cursor-pointer min-w-0 ${
+        className={`flex items-start py-2 px-3 hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700 cursor-pointer min-w-0 ${
           shouldDisable ? "opacity-50 cursor-not-allowed" : ""
         }`}
         style={{ paddingLeft }}
@@ -458,8 +458,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
       {/* Input Field */}
       <div
         className={clsx(
-          "relative w-full h-10 min-h-10 flex items-center border border-rspl-neutral-100 rounded-md bg-white",
-          disabled ? "bg-rspl-neutral-50 cursor-not-allowed" : "cursor-pointer",
+          "relative w-full h-10 min-h-10 flex items-center border border-rspl-neutral-100 dark:border-rspl-neutral-600 rounded-md bg-white dark:bg-rspl-neutral-800 text-rspl-neutral-700 dark:text-rspl-neutral-200",
+          disabled
+            ? "bg-rspl-neutral-50 dark:bg-rspl-neutral-900 cursor-not-allowed"
+            : "cursor-pointer",
           isOpen && "ring-1 ring-rspl-primary-500 border-rspl-primary-500",
         )}
         onClick={() => {
@@ -483,14 +485,14 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
             {/* Remaining Count */}
             {remainingCount > 0 && (
               <div
-                className="relative inline-flex items-center px-2 py-1 text-rspl-neutral-500 text-sm rounded-md border border-rspl-neutral-100"
+                className="relative inline-flex items-center px-2 py-1 text-rspl-neutral-500 dark:text-rspl-neutral-300 text-sm rounded-md border border-rspl-neutral-100 dark:border-rspl-neutral-600 bg-white dark:bg-rspl-neutral-800"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <span>+{remainingCount}</span>
                 {isHovered && (
-                  <div className="absolute left-0 top-full z-10 mt-1 w-auto max-w-xs max-h-48 overflow-y-auto scrollbar whitespace-nowrap rounded-md border border-rspl-neutral-100 bg-white p-2 shadow-lg">
-                    <div className="text-sm text-rspl-neutral-500">
+                  <div className="absolute left-0 top-full z-10 mt-1 w-auto max-w-xs max-h-48 overflow-y-auto scrollbar whitespace-nowrap rounded-md border border-rspl-neutral-100 dark:border-rspl-neutral-700 bg-white dark:bg-rspl-neutral-800 p-2 shadow-lg">
+                    <div className="text-sm text-rspl-neutral-500 dark:text-rspl-neutral-300">
                       {selectedNodes.slice(maxVisibleChips).map((node) => (
                         <div key={node.value} className="py-1">
                           {node.label}
@@ -507,7 +509,9 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
               <span
                 className={clsx(
                   "text-sm",
-                  disabled ? "text-rspl-neutral-100" : "text-rspl-neutral-500",
+                  disabled
+                    ? "text-rspl-neutral-100 dark:text-rspl-neutral-600"
+                    : "text-rspl-neutral-500 dark:text-rspl-neutral-400",
                 )}
               >
                 {placeholder}
@@ -565,7 +569,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
             {/* Dropdown Content */}
             <div
               ref={contentRef}
-              className="fixed dropdown-content flex flex-col rounded-md shadow-lg overflow-hidden bg-white border border-rspl-neutral-100"
+              className="fixed dropdown-content flex flex-col rounded-md shadow-lg overflow-hidden bg-white dark:bg-rspl-neutral-800 border border-rspl-neutral-100 dark:border-rspl-neutral-700"
               style={{
                 top: `${portalPosition.top}px`,
                 left: `${portalPosition.left}px`,
@@ -600,7 +604,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                     />
                   </div>
                   {showPlaceHolderWithSearchOption && (
-                    <div className="mx-3 text-sm text-rspl-neutral-500 flex items-center gap-2 border-b border-rspl-neutral-100 pt-2 pb-4">
+                    <div className="mx-3 text-sm text-rspl-neutral-500 dark:text-rspl-neutral-400 flex items-center gap-2 border-b border-rspl-neutral-100 dark:border-rspl-neutral-700 pt-2 pb-4">
                       {showPlaceHolderWithSearchOption}
                       {showPlaceHolderWithSearchOptionWithMaxSelectionCount && (
                         <Badge variant="secondary" size="sm">
@@ -613,7 +617,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
               )}
               <div
                 ref={optionsScrollRef}
-                className="overflow-y-auto flex-1 scrollbar overflow-x-hidden scrollbar-thin scrollbar-thumb-rspl-neutral-300 scrollbar-track-rspl-neutral-100"
+                className="overflow-y-auto flex-1 scrollbar overflow-x-hidden scrollbar-thin scrollbar-thumb-rspl-neutral-300 scrollbar-track-rspl-neutral-100 dark:scrollbar-thumb-rspl-neutral-600 dark:scrollbar-track-rspl-neutral-800"
                 onScroll={onRemoteLoadMore ? handleOptionsScroll : undefined}
               >
                 {/* Options */}
@@ -622,7 +626,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                   {showSelectAll && filteredOptions.length > 0 && (
                     <>
                       <div
-                        className="flex items-start py-2 px-2 hover:bg-rspl-neutral-50 cursor-pointer min-w-0"
+                        className="flex items-start py-2 px-2 hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-700 cursor-pointer min-w-0"
                         onClick={handleSelectAllToggle}
                       >
                         <Checkbox
@@ -639,7 +643,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
                   {filteredOptions.length === 0 ? (
                     <>
-                      <div className="mx-3 pt-2 pb-4 text-sm text-rspl-neutral-500 border-b border-rspl-neutral-100">
+                      <div className="mx-3 pt-2 pb-4 text-sm text-rspl-neutral-500 dark:text-rspl-neutral-400 border-b border-rspl-neutral-100 dark:border-rspl-neutral-700">
                         {noOptionFoundLabel}
                       </div>
                       {showAddOptionIfNoOptionFound &&

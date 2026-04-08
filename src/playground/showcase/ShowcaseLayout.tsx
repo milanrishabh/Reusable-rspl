@@ -43,7 +43,7 @@ export function ShowcaseLayout(): React.ReactElement {
               <span className="hidden text-xs text-rspl-neutral-500 sm:inline">
                 Import from{" "}
                 <code className="rounded bg-rspl-neutral-100 px-1.5 py-0.5 dark:bg-rspl-neutral-800">
-                  @rspl/reusable-ui
+                  @rspl/react-reusable-ui
                 </code>
               </span>
               <button
@@ -110,7 +110,7 @@ export function ShowcaseLayout(): React.ReactElement {
             ))}
           </nav>
         </aside>
-        <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 md:px-8">
+        <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 md:px-8 bg-rspl-neutral-100 dark:bg-rspl-neutral-900">
           <Outlet />
         </main>
       </div>

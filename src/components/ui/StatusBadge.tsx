@@ -22,16 +22,26 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   children,
 }) => {
   const statusClasses = {
-    draft: "bg-rspl-neutral-50 text-rspl-neutral-500",
-    planned: "bg-rspl-purple-50 text-rspl-purple-500",
-    reviewing: "bg-rspl-primary-50 text-rspl-primary-500",
-    negotiating: "bg-rspl-orange-warning-50 text-rspl-orange-warning-800",
-    pending: "bg-rspl-warning-50 text-rspl-warning-500",
-    approved: "bg-rspl-success-100 text-rspl-success-500",
-    rejected: "bg-rspl-error-100 text-rspl-error-500",
-    active: "bg-rspl-light-green-50 text-rspl-light-green-500",
-    archived: "bg-rspl-blush-grey-50 text-rspl-blush-grey-500 ",
-    completed: "bg-rspl-purple-warning-50 text-rspl-purple-warning-500",
+    draft:
+      "bg-rspl-neutral-50 text-rspl-neutral-500 dark:bg-rspl-neutral-800 dark:text-rspl-neutral-300",
+    planned:
+      "bg-rspl-purple-50 text-rspl-purple-500 dark:bg-rspl-purple-900/30 dark:text-rspl-purple-300",
+    reviewing:
+      "bg-rspl-primary-50 text-rspl-primary-500 dark:bg-rspl-primary-900/30 dark:text-rspl-primary-300",
+    negotiating:
+      "bg-rspl-orange-warning-50 text-rspl-orange-warning-800 dark:bg-rspl-orange-warning-900/30 dark:text-rspl-orange-warning-300",
+    pending:
+      "bg-rspl-warning-50 text-rspl-warning-500 dark:bg-rspl-warning-900/30 dark:text-rspl-warning-300",
+    approved:
+      "bg-rspl-success-100 text-rspl-success-500 dark:bg-rspl-success-900/30 dark:text-rspl-success-300",
+    rejected:
+      "bg-rspl-error-100 text-rspl-error-500 dark:bg-rspl-error-900/30 dark:text-rspl-error-300",
+    active:
+      "bg-rspl-light-green-50 text-rspl-light-green-500 dark:bg-rspl-success-900/30 dark:text-rspl-success-300",
+    archived:
+      "bg-rspl-blush-grey-50 text-rspl-blush-grey-500 dark:bg-rspl-neutral-800 dark:text-rspl-neutral-300",
+    completed:
+      "bg-rspl-purple-warning-50 text-rspl-purple-warning-500 dark:bg-rspl-purple-warning-900/30 dark:text-rspl-purple-warning-300",
   };
 
   return (
@@ -39,7 +49,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       className={clsx(
         "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
         statusClasses[status as keyof typeof statusClasses] ||
-          "bg-rspl-neutral-50 text-rspl-neutral-500",
+          "bg-rspl-neutral-50 text-rspl-neutral-500 dark:bg-rspl-neutral-800 dark:text-rspl-neutral-300",
       )}
     >
       <div

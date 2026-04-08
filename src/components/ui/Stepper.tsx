@@ -36,8 +36,8 @@ const Stepper: React.FC<StepperProps> = ({
   const getStepIcon = (step: StepperStep) => {
     if (step.isCurrent) {
       return (
-        <div className="w-8 h-8 p-2.5 bg-rspl-primary-50 outline outline-rspl-primary-500 rounded-full flex items-center justify-center">
-          <span className="text-sm font-medium text-rspl-primary-500">
+        <div className="w-8 h-8 p-2.5 bg-rspl-primary-50 dark:bg-rspl-primary-900/30 outline outline-rspl-primary-500 rounded-full flex items-center justify-center">
+          <span className="text-sm font-medium text-rspl-primary-500 dark:text-rspl-primary-300">
             {step.id}
           </span>
         </div>
@@ -54,13 +54,13 @@ const Stepper: React.FC<StepperProps> = ({
 
     return (
       <div
-        className={`w-8 h-8 rounded-full flex items-center justify-center outline -outline-offset-1 bg-white ${
+        className={`w-8 h-8 rounded-full flex items-center justify-center outline -outline-offset-1 bg-white dark:bg-rspl-neutral-900 ${
           step.isAccessible
-            ? "outline-rspl-neutral-500 text-rspl-neutral-500"
-            : "outline-rspl-neutral-300 text-rspl-neutral-300"
+            ? "outline-rspl-neutral-500 text-rspl-neutral-500 dark:outline-rspl-neutral-500 dark:text-rspl-neutral-300"
+            : "outline-rspl-neutral-300 text-rspl-neutral-300 dark:outline-rspl-neutral-700 dark:text-rspl-neutral-600"
         }`}
       >
-        <span className="text-sm font-medium text-rspl-neutral-500">
+        <span className="text-sm font-medium text-rspl-neutral-500 dark:text-rspl-neutral-300">
           {step.id}
         </span>
       </div>
@@ -95,12 +95,12 @@ const Stepper: React.FC<StepperProps> = ({
                 disabled={!step.isAccessible}
                 className={`flex items-center gap-2 px-2 py-2 rounded-full text-sm transition-colors  ${
                   step.isCurrent
-                    ? " text-rspl-primary-500 hover:bg-rspl-primary-50 cursor-pointer "
+                    ? " text-rspl-primary-500 dark:text-rspl-primary-300 hover:bg-rspl-primary-50 dark:hover:bg-rspl-primary-900/20 cursor-pointer "
                     : step.isCompleted
-                      ? "text-rspl-success-800 hover:bg-rspl-success-50 cursor-pointer"
+                      ? "text-rspl-success-800 dark:text-rspl-success-300 hover:bg-rspl-success-50 dark:hover:bg-rspl-success-900/20 cursor-pointer"
                       : step.isAccessible
-                        ? " text-rspl-neutral-600 hover:bg-rspl-neutral-50 cursor-pointer"
-                        : " text-rspl-neutral-500 cursor-not-allowed"
+                        ? " text-rspl-neutral-600 dark:text-rspl-neutral-300 hover:bg-rspl-neutral-50 dark:hover:bg-rspl-neutral-800 cursor-pointer"
+                        : " text-rspl-neutral-500 dark:text-rspl-neutral-600 cursor-not-allowed"
                 }`}
               >
                 {getStepIcon(step)}
@@ -141,16 +141,16 @@ const Stepper: React.FC<StepperProps> = ({
                     <div
                       className={`text-sm font-medium whitespace-nowrap ${
                         step.isCurrent
-                          ? "text-rspl-primary-600"
+                          ? "text-rspl-primary-600 dark:text-rspl-primary-300"
                           : step.isCompleted
-                            ? "text-rspl-success-600"
-                            : "text-rspl-neutral-500"
+                            ? "text-rspl-success-600 dark:text-rspl-success-300"
+                            : "text-rspl-neutral-500 dark:text-rspl-neutral-300"
                       }`}
                     >
                       {step.title}
                     </div>
                     {step.isOptional && (
-                      <div className="text-xs text-rspl-neutral-400 mt-1">
+                      <div className="text-xs text-rspl-neutral-400 dark:text-rspl-neutral-500 mt-1">
                         Optional
                       </div>
                     )}

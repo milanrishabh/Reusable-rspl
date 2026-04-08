@@ -32,8 +32,10 @@ const chipVariants = {
     "bg-rspl-success-100 text-rspl-success-800 dark:bg-rspl-success-900/30 dark:text-rspl-success-300",
   warning:
     "bg-rspl-warning-100 text-rspl-warning-800 dark:bg-rspl-warning-900/30 dark:text-rspl-warning-300",
-  error: "bg-rspl-error-100 text-rspl-error-800 dark:bg-rspl-error-900/30 dark:text-rspl-error-300",
-  outline: "border border-rspl-neutral-300 text-black",
+  error:
+    "bg-rspl-error-100 text-rspl-error-800 dark:bg-rspl-error-900/30 dark:text-rspl-error-300",
+  outline:
+    "border border-rspl-neutral-300 dark:border-rspl-neutral-600 text-black dark:text-rspl-neutral-100 bg-transparent",
 };
 
 const chipSizes = {

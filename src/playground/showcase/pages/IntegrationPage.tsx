@@ -104,7 +104,7 @@ createRoot(document.getElementById("root")!).render(
         ]}
       >
         <pre className="overflow-x-auto rounded-md bg-rspl-neutral-900 p-4 text-xs text-rspl-neutral-100">
-          {`import { Button, Modal, useAnnounce } from "@rspl/reusable-ui";`}
+          {`import { Button, Modal, useAnnounce } from "@rspl/react-reusable-ui";`}
         </pre>
       </DemoSection>
 

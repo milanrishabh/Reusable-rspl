@@ -56,7 +56,7 @@ export const Switch: React.FC<SwitchProps> = ({
       />
       <div
         className={clsx(
-          "bg-rspl-neutral-100 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:left-[1.5px] after:bg-white after:border-rspl-neutral-100 after:border after:rounded-full after:transition-all peer-checked:bg-rspl-primary-500",
+          "bg-rspl-neutral-100 dark:bg-rspl-neutral-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:dark:after:border-rspl-primary-200 after:content-[''] after:absolute after:top-[1.5px] after:left-[1.5px] after:bg-white dark:after:bg-rspl-neutral-100 after:border-rspl-neutral-100 dark:after:border-rspl-neutral-600 after:border after:rounded-full after:transition-all peer-checked:bg-rspl-primary-500",
           sizeClasses.track,
           sizeClasses.thumb,
           sizeClasses.translate,

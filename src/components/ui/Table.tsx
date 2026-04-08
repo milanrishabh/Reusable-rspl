@@ -2,6 +2,7 @@ import {
   handleSortChange as handleSortChangeUtil,
   sortData,
 } from "@lib/table/sorting";
+import storage from "@lib/utils/storage";
 import { clsx } from "clsx";
 import {
   ArrowDownNarrowWide,
@@ -12,7 +13,6 @@ import React, { useState, useMemo, useEffect, useCallback } from "react";
 
 import { Checkbox } from "./Checkbox";
 import { Skeleton } from "./Skeleton";
-import storage from "@lib/utils/storage";
 
 // Sort direction type
 export type SortDirection = "asc" | "desc" | null;
@@ -190,7 +190,9 @@ export const TableSkeletonRow = <T extends Record<string, any>>({
     <tr
       className={clsx(
         "bg-white dark:bg-rspl-neutral-900 border-b border-container-border dark:border-rspl-neutral-700",
-        striped && index % 2 === 1 && "bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
+        striped &&
+          index % 2 === 1 &&
+          "bg-rspl-neutral-50 dark:bg-rspl-neutral-800",
       )}
     >
       {selectable && (
@@ -364,11 +366,11 @@ export const TableHeader = <T extends Record<string, any>>({
     return (
       <div className="inline-flex items-center gap-1 ml-1">
         {direction === null ? (
-          <ArrowUpDownIcon className="h-3.5 w-3.5 text-black" />
+          <ArrowUpDownIcon className="h-3.5 w-3.5 text-black dark:text-rspl-neutral-100" />
         ) : direction === "asc" ? (
-          <ArrowUpNarrowWide className="h-3.5 w-3.5 text-black" />
+          <ArrowUpNarrowWide className="h-3.5 w-3.5 text-black dark:text-rspl-neutral-100" />
         ) : (
-          <ArrowDownNarrowWide className="h-3.5 w-3.5 text-black" />
+          <ArrowDownNarrowWide className="h-3.5 w-3.5 text-black dark:text-rspl-neutral-100" />
         )}
         {order !== null && (
           <span className="text-xs font-semibold text-rspl-primary-600 min-w-[12px]">
@@ -382,7 +384,7 @@ export const TableHeader = <T extends Record<string, any>>({
   const hasGroupHeaders = groupHeaders && groupHeaders.length > 0;
 
   return (
-    <thead className="bg-grey-50 border-b border-rspl-primary-100 rounded-tl-lg rounded-tr-lg">
+    <thead className="bg-grey-50 dark:bg-rspl-neutral-800 border-b border-rspl-primary-100 dark:border-rspl-neutral-700 rounded-tl-lg rounded-tr-lg">
       {hasGroupHeaders && (
         <TableGroupHeaderRow<T>
           groupHeaders={groupHeaders}
@@ -398,7 +400,7 @@ export const TableHeader = <T extends Record<string, any>>({
         {selectable && !hasGroupHeaders && (
           <th
             id="table-header-select-all"
-            className="p-2 w-4 h-12 sticky left-0 z-20 bg-grey-50"
+            className="p-2 w-4 h-12 sticky left-0 z-20 bg-grey-50 dark:bg-rspl-neutral-800"
           >
             <div className="flex items-center">
               <Checkbox
@@ -417,8 +419,8 @@ export const TableHeader = <T extends Record<string, any>>({
             const { direction } = getSortInfo(sortKey);
             const frozenClasses = column.frozen
               ? column.frozenPosition === "left"
-                ? "sticky left-0 z-10 bg-grey-50"
-                : "sticky right-0 z-10 bg-grey-50"
+                ? "sticky left-0 z-10 bg-grey-50 dark:bg-rspl-neutral-800"
+                : "sticky right-0 z-10 bg-grey-50 dark:bg-rspl-neutral-800"
               : "";
 
             return (
@@ -426,7 +428,7 @@ export const TableHeader = <T extends Record<string, any>>({
                 id={`table-header-${column.key as string}`}
                 key={column.key as string}
                 className={clsx(
-                  "h-12 p-2 text-left text-og-black text-xs font-medium leading-none",
+                  "h-12 p-2 text-left text-og-black dark:text-rspl-neutral-100 text-xs font-medium leading-none",
                   column.sortable &&
                     "cursor-pointer select-none hover:bg-rspl-neutral-100 dark:hover:bg-rspl-neutral-700 transition-colors",
                   column.align === "center" && "text-center",
@@ -474,9 +476,11 @@ export const TableRow = <T extends Record<string, any>>({
     <tr
       id={rowIdAttr}
       className={clsx(
-        "bg-white dark:bg-rspl-neutral-900 border-b border-container-border dark:border-rspl-neutral-700 hover:bg-rspl-primary-50",
-        onClick && "cursor-pointer hover:bg-rspl-primary-50",
-        selected && "bg-rspl-primary-50 hover:bg-rspl-primary-50",
+        "bg-white dark:bg-rspl-neutral-900 border-b border-container-border dark:border-rspl-neutral-700 hover:bg-rspl-primary-50 dark:hover:bg-rspl-primary-900/20",
+        onClick &&
+          "cursor-pointer hover:bg-rspl-primary-50 dark:hover:bg-rspl-primary-900/20",
+        selected &&
+          "bg-rspl-primary-50 dark:bg-rspl-primary-900/20 hover:bg-rspl-primary-50 dark:hover:bg-rspl-primary-900/20",
         className,
       )}
       onClick={() => !selectable && onClick?.(row)}
@@ -849,7 +853,7 @@ export const Table = <T extends Record<string, any>>({
                           key={column.key as string}
                           colSpan={colspan}
                           className={clsx(
-                            "h-19 p-2 whitespace-nowrap text-xs font-bold text-og-black",
+                            "h-19 p-2 whitespace-nowrap text-xs font-bold text-og-black dark:text-rspl-neutral-100",
                             alignClasses[cellAlignment],
                             column.className,
                             cellClassName, // Apply cell-specific className

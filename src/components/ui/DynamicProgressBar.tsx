@@ -84,13 +84,13 @@ export const DynamicProgressBar: React.FC<DynamicProgressBarProps> = ({
         <div className="self-stretch flex flex-col justify-start items-start gap-3">
           <div className="self-stretch inline-flex justify-start items-center gap-2">
             <div className="flex-1 flex justify-start items-center gap-2">
-              <div className="text-sm font-medium text-rspl-neutral-700 leading-4">
+              <div className="text-sm font-medium text-rspl-neutral-700 dark:text-rspl-neutral-200 leading-4">
                 {label}
               </div>
               {infoText && (
                 <Tooltip content={infoText} position="top">
                   <div className="w-4 h-4 relative overflow-hidden flex items-center justify-center cursor-pointer">
-                    <Info className="w-3.5 h-3.5 text-rspl-neutral-500" />
+                    <Info className="w-3.5 h-3.5 text-rspl-neutral-500 dark:text-rspl-neutral-400" />
                   </div>
                 </Tooltip>
               )}
@@ -106,7 +106,7 @@ export const DynamicProgressBar: React.FC<DynamicProgressBarProps> = ({
             className={clsx(
               "flex-1 relative rounded-full overflow-hidden",
               progressSizes[size],
-              "bg-rspl-neutral-100",
+              "bg-rspl-neutral-100 dark:bg-rspl-neutral-800 dark:text-rspl-neutral-100",
             )}
           >
             {/* Progress segment up to 100% (default color) */}
@@ -140,11 +140,11 @@ export const DynamicProgressBar: React.FC<DynamicProgressBarProps> = ({
 
         {/* Percentage Labels */}
         <div className="self-stretch relative">
-          <div className="absolute left-0 text-rspl-neutral-900 text-sm font-normal leading-4">
+          <div className="absolute left-0 text-rspl-neutral-900 dark:text-rspl-neutral-100 text-sm font-normal leading-4">
             0%
           </div>
           <div
-            className="absolute text-rspl-neutral-900 text-sm font-normal leading-4"
+            className="absolute text-rspl-neutral-900 dark:text-rspl-neutral-100 text-sm font-normal leading-4"
             style={{
               left: `${widthAt100Percent}%`,
               transform: "translateX(-50%)",
@@ -153,7 +153,7 @@ export const DynamicProgressBar: React.FC<DynamicProgressBarProps> = ({
             100%
           </div>
           {maxValue > 100 && (
-            <div className="absolute right-0 text-rspl-neutral-900 text-sm font-normal leading-4">
+            <div className="absolute right-0 text-rspl-neutral-900 dark:text-rspl-neutral-100 text-sm font-normal leading-4">
               {maxValue}%
             </div>
           )}
